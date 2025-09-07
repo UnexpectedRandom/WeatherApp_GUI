@@ -1,7 +1,6 @@
 import customtkinter as ctk
 import requests
 
-# Weather App
 API_KEY = ""
 
 class App:
@@ -46,19 +45,15 @@ class GUI(ctk.CTk):
         self.columnconfigure([0, 1], weight=1)
         self.rowconfigure([0, 1, 2, 3, 4], weight=1)
 
-        # Create and place widgets
         self.create_widgets()
 
     def create_widgets(self):
-        # Title Label
         self.title_label = ctk.CTkLabel(self, text="Pick a City or Country", font=("Arial", 16, "bold"))
         self.title_label.grid(row=0, column=0, columnspan=2, padx=20, pady=10, sticky="n")
 
-        # Entry for city name
         self.text_box = ctk.CTkEntry(self, placeholder_text="Enter City: ")
         self.text_box.grid(row=1, column=0, columnspan=2, padx=20, pady=10, sticky="ew")
 
-        # Create frames to act as backgrounds for labels
         self.frame_temp_c = ctk.CTkFrame(self, corner_radius=10)
         self.frame_temp_c.grid(row=2, column=0, padx=10, pady=5, sticky="ew")
         self.label_temp_c = ctk.CTkLabel(self.frame_temp_c, text="")
@@ -84,7 +79,6 @@ class GUI(ctk.CTk):
         self.label_feels_like = ctk.CTkLabel(self.frame_feels_like, text="")
         self.label_feels_like.pack(padx=10, pady=10)
 
-        # Button to check weather
         self.check_button = ctk.CTkButton(self, text="Check", command=self.update_labels)
         self.check_button.grid(row=5, column=0, columnspan=2, padx=20, pady=10)
 
@@ -102,6 +96,5 @@ class GUI(ctk.CTk):
         else:
             self.label_temp_c.configure(text=output)
 
-# Create and run the application
 app = GUI()
 app.mainloop()
